@@ -26,3 +26,20 @@ export interface ContinuSketchDiffer<TIn, TPatch> {
    */
   apply(input: TIn, patch: TPatch): TIn;
 }
+
+export class ContinuSketchDefaultDiffer<T> implements ContinuSketchDiffer<
+  T,
+  T
+> {
+  diff(a: T, b: T): ContinuSketchDiffResult<T> {
+    if (a === b) {
+      return { type: "equal" };
+    }
+
+    return { type: "patch", patch: b };
+  }
+
+  apply(_input: T, patch: T): T {
+    return patch;
+  }
+}

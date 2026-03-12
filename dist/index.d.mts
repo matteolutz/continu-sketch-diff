@@ -72,5 +72,10 @@ declare class ExcalidrawFormatStrategy extends ContinuSketchFormatStrategy<Excal
   constructor();
 }
 //#endregion
-export { ContinuSketchDefaultTransformer, type ContinuSketchDiffResult, type ContinuSketchDiffer, ContinuSketchFormatStrategy, type ContinuSketchTransformer, type ExcalidrawData, type ExcalidrawDiff, ExcalidrawFormatStrategy };
+//#region src/formats/fallback.d.ts
+declare class FallbackStrategy extends ContinuSketchFormatStrategy<string, string, string> {
+  constructor();
+}
+//#endregion
+export { ContinuSketchDefaultTransformer, type ContinuSketchDiffResult, type ContinuSketchDiffer, ContinuSketchFormatStrategy, type ContinuSketchTransformer, type ExcalidrawData, type ExcalidrawDiff, ExcalidrawFormatStrategy, FallbackStrategy };
 //# sourceMappingURL=index.d.mts.map

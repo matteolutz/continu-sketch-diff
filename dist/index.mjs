@@ -115,6 +115,27 @@ var ExcalidrawFormatStrategy = class extends ContinuSketchFormatStrategy {
 	}
 };
 //#endregion
-export { ContinuSketchDefaultTransformer, ContinuSketchFormatStrategy, ExcalidrawFormatStrategy };
+//#region src/differ.ts
+var ContinuSketchDefaultDiffer = class {
+	diff(a, b) {
+		if (a === b) return { type: "equal" };
+		return {
+			type: "patch",
+			patch: b
+		};
+	}
+	apply(_input, patch) {
+		return patch;
+	}
+};
+//#endregion
+//#region src/formats/fallback.ts
+var FallbackStrategy = class extends ContinuSketchFormatStrategy {
+	constructor() {
+		super(new ContinuSketchDefaultTransformer(), new ContinuSketchDefaultDiffer());
+	}
+};
+//#endregion
+export { ContinuSketchDefaultTransformer, ContinuSketchFormatStrategy, ExcalidrawFormatStrategy, FallbackStrategy };
 
 //# sourceMappingURL=index.mjs.map

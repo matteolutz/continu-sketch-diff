@@ -10,3 +10,5 @@ export {
   type ExcalidrawData,
   type ExcalidrawDiff,
 } from "./formats/excalidraw.js";
+
+export { FallbackStrategy } from "./formats/fallback.js";
