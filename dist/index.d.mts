@@ -54,7 +54,8 @@ declare abstract class ContinuSketchFormatStrategy<T, TPatch, TIn = string> {
   readonly differ: ContinuSketchDiffer<T, TPatch>;
   protected constructor(transformer: ContinuSketchTransformer<T, TIn>, differ: ContinuSketchDiffer<T, TPatch>);
   decode(a: TIn): T;
-  diff(a: TIn, b: TIn): TPatch | null;
+  diff(a: T, b: T): TPatch | null;
+  diffInputs(a: TIn, b: TIn): TPatch | null;
   apply(a: TIn, patch: TPatch): TIn;
 }
 //#endregion

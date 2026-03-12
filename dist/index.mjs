@@ -19,11 +19,14 @@ var ContinuSketchFormatStrategy = class {
 		return this.transformer.decode(a);
 	}
 	diff(a, b) {
-		const aDecoded = this.transformer.decode(a);
-		const bDecoded = this.transformer.decode(b);
-		const patch = this.differ.diff(aDecoded, bDecoded);
+		const patch = this.differ.diff(a, b);
 		if (patch.type === "equal") return null;
 		return patch.patch;
+	}
+	diffInputs(a, b) {
+		const aDecoded = this.transformer.decode(a);
+		const bDecoded = this.transformer.decode(b);
+		return this.diff(aDecoded, bDecoded);
 	}
 	apply(a, patch) {
 		const aDecoded = this.transformer.decode(a);

@@ -11,15 +11,17 @@ export abstract class ContinuSketchFormatStrategy<T, TPatch, TIn = string> {
     return this.transformer.decode(a);
   }
 
-  diff(a: TIn, b: TIn): TPatch | null {
+  diff(a: T, b: T): TPatch | null {
+    const patch = this.differ.diff(a, b);
+    if (patch.type === "equal") return null;
+    return patch.patch;
+  }
+
+  diffInputs(a: TIn, b: TIn): TPatch | null {
     const aDecoded = this.transformer.decode(a);
     const bDecoded = this.transformer.decode(b);
 
-    const patch = this.differ.diff(aDecoded, bDecoded);
-
-    if (patch.type === "equal") return null;
-
-    return patch.patch;
+    return this.diff(aDecoded, bDecoded);
   }
 
   apply(a: TIn, patch: TPatch): TIn {
