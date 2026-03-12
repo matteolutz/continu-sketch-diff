@@ -1,0 +1,27 @@
+{
+  "name": "continu-sketch-diff",
+  "version": "1.0.0",
+  "main": "dist/index.mjs",
+  "types": "dist/index.d.mts",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^25.4.0",
+    "jest": "^30.3.0",
+    "tsdown": "^0.21.1",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "jsondiffpatch": "^0.7.3",
+    "lz-string": "^1.5.0",
+    "ts-jest": "^29.4.6"
+  }
+}
